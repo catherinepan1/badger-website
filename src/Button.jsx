@@ -1,20 +1,20 @@
 import { useState } from 'react';
 
-export function Button({message, type="", onButtonClick, isAsync=false}){
+export default function Button({message, type="", onButtonClick, isAsync=false, onSuccess=null, onFailure=null}){
   const [status, setStatus] = useState("default");
   const buttonClass = "styled-button " + status + (type === "light" ? " light":"");
   const clickFunc = isAsync ? handleClick:onButtonClick;
 
   //handle clicks with asynchronous callbacks
-  function handleClick(){
+  function handleClick(e){
+    e.preventDefault();
     setStatus("active");
     //set up promise?
     onButtonClick().then((resolved) => {
-      console.log("no error!");
+      onSuccess(resolved);
       setStatus("default");
     }).catch((error) => {
-      console.error(error);
-      console.log("[handleClick error]")
+      onFailure(error.message);
       setStatus("default");
     });
   }

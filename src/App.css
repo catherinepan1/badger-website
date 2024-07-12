@@ -1,46 +1,54 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
 
 button.styled-button.active {
   background: red;
+}
+
+/*popup styling*/
+#popup-cont {
+  position: fixed;
+  bottom: 0;
+  display: flex; /*to prevent margin collapsing*/
+  flex-direction: column;
+  width: 100%;
+  max-width: 15em;
+  max-height: 100vh;
+}
+.popup-height-cont {
+  position: relative;
+  transform-origin: center center;
+  overflow: hidden;
+}
+.popup {
+  position: relative;
+  padding: 1em;
+  background: skyblue;
+}
+.popup-close {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 1em;
+  height: 1em;
+  border: 2px solid white;
+  border-radius: 50%;
+  transition: var(--trans) ease;
+}
+.popup-close:hover {
+  cursor: pointer;
+}
+.popup-close::before,
+.popup-close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.75em;
+  height: 2px;
+  background: white;
+  transform: translate(-50%, -50%) rotate(45deg);
+  transition: inherit;
+}
+.popup-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }

@@ -29,9 +29,9 @@ export async function addEmail(email){
       'email': email,
       'active': true
     });
-    return Promise.resolve("Successfully added email!");
+    return Promise.resolve("You've successfully joined our mailing list!");
   }
   catch(e){
-    return Promise.reject(new Error("Error adding email: " + e));
+    return Promise.reject(new Error("Something went wrong when adding the email. Please try again!"));
   }
 }
