@@ -1,0 +1,31 @@
+<svg width="375" height="149" viewBox="0 0 375 149" preserveAspectRatio="xMaxYMid" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_80_702)">
+<mask id="mask0_80_702" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="6" width="375" height="135">
+<!--right side-->
+<circle cx="7.5" cy="7.5" r="5.5" transform="matrix(-1 0 0 1 337 34)" stroke="white" stroke-width="4"/>
+<path d="M333.614 48.4417L332.172 47.0555L334.944 44.1721L336.386 45.5583L333.614 48.4417ZM352.681 64V66H351.876L351.295 65.4417L352.681 64ZM336.386 45.5583L354.067 62.5583L351.295 65.4417L333.614 48.4417L336.386 45.5583ZM352.681 62L375 62V66H352.681V62Z" fill="white"/>
+<path d="M347 74H345V78H347V74ZM375 74H347V78H375V74Z" fill="white"/>
+<circle cx="338.5" cy="76.5" r="5.5" transform="rotate(-180 338.5 76.5)" stroke="white" stroke-width="4"/>
+<path d="M310 88H308V92H310V88ZM375 88L310 88V92L375 92V88Z" fill="white"/>
+<circle cx="301.5" cy="89.5" r="5.5" transform="rotate(-180 301.5 89.5)" stroke="white" stroke-width="4"/>
+<circle cx="264.5" cy="133.5" r="5.5" transform="rotate(-180 264.5 133.5)" stroke="white" stroke-width="4"/>
+<path d="M269.784 125.572L268.356 126.973L271.157 129.828L272.585 128.428L269.784 125.572ZM293.613 105V103H292.796L292.213 103.572L293.613 105ZM272.585 128.428L295.014 106.428L292.213 103.572L269.784 125.572L272.585 128.428ZM293.613 107L375 107V103L293.613 103V107Z" fill="white"/>
+<path d="M256.422 110.5C258.222 115 261.922 118 263.422 119C263.422 119 268.756 115.5 270.422 110.5C271.589 107 269.606 104.109 268.422 103C267.239 101.891 265.422 101 263.422 101C261.422 101 259.422 101.5 257.922 103C256.648 104.275 255.293 107.676 256.422 110.5Z" stroke="white" stroke-width="4"/>
+<circle cx="263.422" cy="108" r="2" fill="#00010E"/>
+<path d="M322.422 17.5C324.222 22 327.922 25 329.422 26C329.422 26 334.756 22.5 336.422 17.5C337.589 14 335.606 11.1092 334.422 10C333.239 8.89082 331.422 8 329.422 8C327.422 8 325.422 8.5 323.922 10C322.648 11.2748 321.293 14.6762 322.422 17.5Z" stroke="white" stroke-width="4"/>
+<circle cx="329.422" cy="15" r="2" fill="#00010E"/>
+</mask>
+<g mask="url(#mask0_80_702)">
+<rect width="375" height="149" fill="url(#paint0_linear_80_702)"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_80_702" x1="7.67942e-06" y1="74.5" x2="36.2432" y2="213.819" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1BDEFC"/>
+<stop offset="1" stop-color="#F810B4"/>
+</linearGradient>
+<clipPath id="clip0_80_702">
+<rect width="375" height="149" fill="white"/>
+</clipPath>
+</defs>
+</svg>

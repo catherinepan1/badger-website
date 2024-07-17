@@ -1,54 +1,290 @@
-
-
-button.styled-button.active {
-  background: red;
+/*controlling padding on elements + other general styling of sections*/
+.content, footer {
+  padding: 2em 10%;
 }
-
-/*popup styling*/
-#popup-cont {
-  position: fixed;
-  bottom: 0;
-  display: flex; /*to prevent margin collapsing*/
-  flex-direction: column;
-  width: 100%;
-  max-width: 15em;
-  max-height: 100vh;
+.content-side {
+  padding: 0 10%;
 }
-.popup-height-cont {
+header {
+  padding: 0 calc(10% - 3em);
+}
+section {
   position: relative;
-  transform-origin: center center;
-  overflow: hidden;
 }
-.popup {
-  position: relative;
-  padding: 1em;
-  background: skyblue;
+section .desktop {
+  display: none;
 }
-.popup-close {
+@media (min-width: 40rem){
+  .content, footer {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+  .content-side {
+    padding: 0 15%;
+  }
+  header {
+    padding: 0 calc(15% - 3em);
+  }
+  section .mobile {
+    display: none;
+  }
+  section .desktop {
+    display: inline-block;
+  }
+}
+@media (min-width: 60rem){
+  .content, footer {
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+  .content-side {
+    padding: 0 20%;
+  }
+  header {
+    padding: 0 calc(20% - 3em);
+  }
+}
+
+/*styling divider icon element*/
+.divider-img {
+  display: block;
+  width: 3.5em;
+}
+
+/*styling header*/
+#header-logo {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  padding-right: 1em;
+  color: var(--white);
+  font-weight: bold;
+  font-size: 1.25em;
+}
+#header-logo img {
+  width: 3em;
+  height: 3em;
+}
+
+/*styling landing element*/
+#landing-back-img {
+  min-width: 100%;
+  height: 100%;
   position: absolute;
-  top: 1em;
-  right: 1em;
-  width: 1em;
-  height: 1em;
-  border: 2px solid white;
-  border-radius: 50%;
-  transition: var(--trans) ease;
+  right: 0;
+  top: 0;
 }
-.popup-close:hover {
-  cursor: pointer;
-}
-.popup-close::before,
-.popup-close::after {
+#landing-wrapper::before {
   content: "";
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0.75em;
-  height: 2px;
-  background: white;
-  transform: translate(-50%, -50%) rotate(45deg);
-  transition: inherit;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(var(--black-rgb), 0.5), var(--black));
+  z-index: 0;
 }
-.popup-close::after {
-  transform: translate(-50%, -50%) rotate(-45deg);
+#landing-wrapper {
+  text-align: center;
+}
+#landing-wrapper > * {
+  position: relative;
+  z-index: 1;
+}
+#landing-wrapper h1 {
+  margin: 0;
+  margin-bottom: 0.25em;
+  font-size: 3.5em;
+  line-height: 1.25;
+}
+#landing-wrapper h1 span {
+  display: block;
+}
+#landing-wrapper p {
+  text-align: left;
+}
+#landing-wrapper .download-button {
+  margin-top: 1em;
+}
+#landing-wrapper .download-button.mobile {
+  margin-bottom: 2em;
+}
+#landing-wrapper .img-wrapper {
+  display: none;
+}
+/*allowing the title on the same line for ipad-esque widths*/
+@media (min-width: 30rem){
+  #landing-wrapper h1 span {
+    display: inline;
+  }
+  #landing-wrapper h1 span::after {
+    content: ". ";
+  }
+}
+
+/*cta styling*/
+#cta {
+  text-align: center;
+}
+#cta .divider-img {
+  position: absolute;
+  top: 1em;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#cta > div.content-side {
+  padding-top: 3em;
+}
+#cta p {
+  font-size: 1.75em;
+  font-weight: bold;
+  color: var(--white);
+  margin: 0 auto;
+  max-width: 15em;
+}
+#cta .download-button {
+  margin-top: 1.5em;
+}
+#cta #download-area {
+  position: relative;
+  padding-bottom: 5em;
+}
+#cta .cta-back-image {
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  max-width: 100%;
+}
+#cta .cta-back-image > * {
+  width: 100%;
+  height: 100%;
+}
+#cta .cta-back-image.cta-right {
+  right: 0;
+}
+#cta .cta-back-image.cta-left {
+  left: 0;
+}
+
+/*footer styling*/
+footer .footer-heading {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  margin-top: 1.5em;
+}
+footer .footer-heading + * {
+  margin-top: 0.5em;
+}
+#footer-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5em 1em;
+}
+#footer-form input {
+  max-width: 15em;
+  flex-grow: 1;
+}
+#footer-form .styled-button {
+  margin: 0;
+}
+#footer-links {
+  margin-top: 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#footer-links > * {
+  margin: 0.125em 0;
+}
+#footer-icon-links {
+  margin-top: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+#footer-icon-links a {
+  height: 1.5em;
+}
+
+/*side-by-side desktop styling*/
+@media (min-width: 40rem){
+  /*landing page*/
+  #landing-wrapper {
+    display: flex;
+    align-items: stretch;
+    text-align: left;
+  }
+  #landing-wrapper::before {
+    opacity: 0.2;
+  }
+  #landing-wrapper > * {
+    flex: 1 1 0;
+  }
+  #landing-wrapper #landing-text {
+    margin-right: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    box-shadow: 0 0 1em 1em rgba(var(--black-rgb), 0.7);
+    background: rgba(var(--black-rgb), 0.7);
+  }
+  #landing-wrapper .img-wrapper {
+    display: block;
+  }
+  #landing-wrapper .download-button {
+    margin-top: 1em;
+  }
+  #landing-wrapper h1 span {
+    display: block;
+  }
+  #landing-wrapper h1 span::after {
+    content: "";
+  }
+
+  /*cta with larger side graphics*/
+  #cta > div.content-side {
+    padding-top: 2em;
+  }
+  #cta #download-area {
+    padding-bottom: 2em;
+  }
+  #cta .cta-back-image {
+    max-height: 11em;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /*footer*/
+  footer {
+    display: flex;
+    align-items: flex-start;
+  }
+  #footer-text {
+    position: relative;
+    flex: 2.5 1 0;
+    padding-right: 2em;
+  }
+  #footer-text::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 1px;
+    background: var(--text);
+  }
+  #footer-text div:first-child .footer-heading {
+    margin-top: 0;
+  }
+  #footer-links {
+    flex: 1 1 0;
+    padding-left: 2em;
+    margin-top: 0;
+  }
+  #footer-icon-links {
+    margin-top: 2em;
+  }
 }

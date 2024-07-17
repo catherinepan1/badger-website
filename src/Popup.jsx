@@ -8,7 +8,13 @@ export default function Popup({ messageHeading, message, isError, onRemove }){
   const nodeRef = useRef(null);
   const transDuration = 500;
   const showDuration = 4000;
-  const iconClass = "popup-icon " + (isError ? "error":"no-error");
+  let iconEl;
+  if(isError){
+    iconEl = <img src = "./media/error-icon.svg" alt = "Error icon"/>;
+  }
+  else {
+    iconEl = <img src = "./media/success-icon.svg" alt = "Success icon"/>
+  }
 
   //used to get the scrollheight of the popup to properly animate
   //drawback is that maxHeight is always set and may cause overflow on resize
@@ -67,16 +73,16 @@ export default function Popup({ messageHeading, message, isError, onRemove }){
   return (
     <Transition nodeRef = {nodeRef} in = {shown} timeout = {transDuration} appear = {true}
                 onEnter = {setScrollHeight}
-                onEntered = {startTimer}
+                //onEntered = {startTimer}
                 onExited = {close}>
       { (state) => (
         <div ref = {nodeRef} className = "popup-height-cont" style = {{...defaultStyle, ...transitionStyles[state]}}>
           <div className = "popup">
-            <div className = {iconClass}>
-              <span className = "icon"></span>
+            <div className = "popup-icon img-wrapper">
+              {iconEl}
             </div>
             <div className = "popup-message">
-              <p>{messageHeading}</p>
+              <p className = "popup-heading">{messageHeading}</p>
               <p>{message}</p>
             </div>
             <span className = "popup-close" aria-label="Close popup" title = "Close popup" onClick = {startClose}></span>

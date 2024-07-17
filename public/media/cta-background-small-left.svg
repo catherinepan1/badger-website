@@ -1,0 +1,35 @@
+<svg width="375" height="149" viewBox="0 0 375 149" fill="none" preserveAspectRatio="xMinYMid" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_80_702)">
+<mask id="mask0_80_702" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="6" width="375" height="135">
+<!--left side-->
+<path d="M17 53L19 53L19 49L17 49L17 53ZM1.74846e-07 53L17 53L17 49L-1.74846e-07 49L1.74846e-07 53Z" fill="white"/>
+<circle cx="7.5" cy="7.5" r="5.5" transform="matrix(1 0 0 -1 18 59)" stroke="white" stroke-width="4"/>
+<circle cx="7.5" cy="7.5" r="5.5" transform="matrix(1 0 0 -1 60 100)" stroke="white" stroke-width="4"/>
+<path d="M63.3862 85.5583L64.8279 86.9445L62.0555 89.8279L60.6138 88.4417L63.3862 85.5583ZM44.3188 70V68H45.1243L45.7049 68.5583L44.3188 70ZM60.6138 88.4417L42.9326 71.4417L45.7049 68.5583L63.3862 85.5583L60.6138 88.4417ZM44.3188 72L0 72V68L44.3188 68V72Z" fill="white"/>
+<path d="M28 91H30V95H28V91ZM0 91H28V95H0L0 91Z" fill="white"/>
+<circle cx="7.5" cy="7.5" r="5.5" transform="matrix(1 0 0 -1 29 101)" stroke="white" stroke-width="4"/>
+<path d="M79 120L81 120L81 116L79 116L79 120ZM-1.74846e-07 120L79 120L79 116L1.74846e-07 116L-1.74846e-07 120Z" fill="white"/>
+<circle cx="7.5" cy="7.5" r="5.5" transform="matrix(1 0 0 -1 80 125)" stroke="white" stroke-width="4"/>
+<path d="M119 134L121 134L121 130L119 130L119 134ZM6.08603e-05 134L119 134L119 130L6.121e-05 130L6.08603e-05 134Z" fill="white"/>
+<circle cx="7.5" cy="7.5" r="5.5" transform="matrix(1 0 0 -1 120 139)" stroke="white" stroke-width="4"/>
+<path d="M31.355 26.5C29.555 31 25.8548 34 24.3549 35C24.3549 35 19.0216 31.5 17.355 26.5C16.1883 23 18.1716 20.1092 19.3549 19C20.5382 17.8908 22.3549 17 24.3549 17C26.3549 17 28.3549 17.5 29.8549 19C31.1297 20.2748 32.4845 23.6762 31.355 26.5Z" stroke="white" stroke-width="4"/>
+<circle cx="2" cy="2" r="2" transform="matrix(-1 0 0 1 26.3549 22)" fill="#00010E"/>
+<path d="M74.355 66.5C72.555 71 68.8549 74 67.355 75C67.355 75 62.0217 71.5 60.355 66.5C59.1883 63 61.1717 60.1092 62.355 59C63.5383 57.8908 65.355 57 67.355 57C69.355 57 71.355 57.5 72.855 59C74.1297 60.2748 75.4845 63.6762 74.355 66.5Z" stroke="white" stroke-width="4"/>
+<circle cx="2" cy="2" r="2" transform="matrix(-1 0 0 1 69.355 62)" fill="#00010E"/>
+<path d="M133.355 107.5C131.555 112 127.855 115 126.355 116C126.355 116 121.022 112.5 119.355 107.5C118.188 104 120.172 101.109 121.355 100C122.538 98.8908 124.355 98 126.355 98C128.355 98 130.355 98.5 131.855 100C133.13 101.275 134.484 104.676 133.355 107.5Z" stroke="white" stroke-width="4"/>
+<circle cx="2" cy="2" r="2" transform="matrix(-1 0 0 1 128.355 103)" fill="#00010E"/>
+</mask>
+<g mask="url(#mask0_80_702)">
+<rect width="375" height="149" fill="url(#paint0_linear_80_702)"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_80_702" x1="7.67942e-06" y1="74.5" x2="36.2432" y2="213.819" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1BDEFC"/>
+<stop offset="1" stop-color="#F810B4"/>
+</linearGradient>
+<clipPath id="clip0_80_702">
+<rect width="375" height="149" fill="white"/>
+</clipPath>
+</defs>
+</svg>

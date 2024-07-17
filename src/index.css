@@ -1,70 +1,324 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  line-height: 1.3;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --trans: 0.25s
+  /*colors*/
+  --black: #00010E;
+  --black-rgb: 0, 1, 14;
+  --white: #FFFFFF;
+  --text: #E0E0E0;
+  --blue: #1BDEFC;
+  --blue-rgb: 27, 222, 252;
+  --purple: #956CD5;
+  --magenta: #F810B4;
+  --blue-purple-gradient: linear-gradient(90deg, var(--blue), var(--purple));
+
+  /*other variables*/
+  --trans: 0.25s;
+  --radius: 2em;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+/*some basic default styling*/
+html, body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  padding: 0;
   min-height: 100vh;
 }
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+body {
+  background: var(--black);
+  color: var(--text);
+  box-sizing: border-box;
 }
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+button, input {
   font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+  line-height: inherit;
 }
-button:hover {
-  border-color: #646cff;
+a {
+  position: relative;
+  color: var(--text);
+  text-decoration: none;
+  transition: var(--trans) ease;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+a:hover {
+  color: white;
+}
+a, button, input {
+  outline: 1px dotted transparent;
+  outline-offset: 0;
+}
+a:focus, button:focus, input:focus {
+  outline: 1px dotted var(--white);
+  outline-offset: 3px;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: var(--white);
+  font-weight: bold;
+}
+@media (min-width: 70rem){
+  body {
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
+}
+@media (min-width: 120rem){
+  body {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+}
+@media (min-width: 160rem){
+  body {
+    font-size: 1.3rem;
+    line-height: 1.7;
+  }
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/*animation for loading on buttons*/
+@keyframes loadSymbolAnimation {
+  from {
+    transform: rotate(0);
   }
-  a:hover {
-    color: #747bff;
+  to {
+    transform: rotate(360deg);
   }
-  button {
-    background-color: #f9f9f9;
-  }
+}
+
+/*styling button elements (can be anchor or button)*/
+.styled-button {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  border: none;
+  margin: 0.5em 0;
+  padding: 0.5em 1.25em;
+  border-radius: var(--radius);
+  background: var(--blue-purple-gradient);
+  color: var(--white);
+  box-shadow: 0 0 1.25em rgba(var(--blue-rgb), 0.3);
+  transition: var(--trans) ease;
+}
+.styled-button > * {
+  position: relative;
+  z-index: 1;
+}
+.styled-button .button-message {
+  text-shadow: 0 2px 5px rgba(255, 255, 255, 0.5);
+}
+.styled-button::before,
+.styled-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: inherit;
+  transform: scaleX(-1);
+  opacity: 0;
+  z-index: 0;
+  transition: inherit;
+}
+.styled-button:hover { /*basic hover styling*/
+  cursor: pointer;
+  box-shadow: 0 0.1em 1.5em rgba(var(--blue-rgb), 0.5);
+}
+.styled-button:hover::before {
+  opacity: 0.75;
+}
+.styled-button.light { /*setting up light variation of styling*/
+  background: transparent;
+  border: 1px solid var(--white);
+  box-shadow: 0 0 1.25em rgba(255, 255, 255, 0.3),
+              inset 0 0 0.5em rgba(255, 255, 255, 0.3);
+}
+.styled-button.light::before {
+  display: none;
+}
+.styled-button.light:hover {
+  box-shadow: 0 0 1.5em rgba(255, 255, 255, 0.5),
+              inset 0 0 0.75em rgba(255, 255, 255, 0.5);
+}
+.styled-button.light:hover .button-message {
+  text-shadow: 0 2px 0.5em rgba(255, 255, 255, 0.8);
+}
+.styled-button::after { /*setting up loading/active state on buttons*/
+  background: rgba(var(--black-rgb), 0.25);
+  z-index: 2;
+  transform: none;
+}
+.styled-button .button-load {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1em;
+  height: 1em;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: inherit;
+}
+.styled-button .button-load-symbol {
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--white);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+}
+.styled-button.active { /*styling loading/active state*/
+  pointer-events: none;
+}
+.styled-button.active::after {
+  opacity: 1;
+}
+.styled-button.active .button-load {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+.styled-button.active .button-load-symbol {
+  animation: loadSymbolAnimation 1s linear infinite;
+}
+
+/*general text input styling*/
+input[type="text"] {
+  border-radius: var(--radius);
+  padding: 0.5em 1.25em;
+  border: none;
+  background: var(--text);
+  color: var(--black);
+  transition: var(--trans) ease;
+  box-shadow: 0 0 1.25em rgba(255, 255, 255, 0.3);
+}
+input[type="text"]:hover,
+input[type="text"]:focus {
+  box-shadow: 0 0 1.5em rgba(255, 255, 255, 0.5);
+}
+input[type="text"]:focus {
+  background: var(--white);
+}
+
+/*popup styling*/
+#popup-cont {
+  position: fixed;
+  bottom: 0;
+  display: flex; /*to prevent margin collapsing*/
+  flex-direction: column;
+  width: 100%;
+  max-width: 20em;
+  max-height: 100vh;
+  z-index: 999;
+}
+.popup-height-cont {
+  position: relative;
+  transform-origin: center center;
+  overflow: hidden;
+  box-shadow: 0 0em 1em 0.25em rgba(var(--blue-rgb), 0.3);
+}
+.popup { /*styling popup itself*/
+  position: relative;
+  padding: 1.5em 1em; 
+  background: var(--black);
+  display: flex;
+  align-items: center;
+}
+.popup-heading {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+  color: var(--white);
+}
+.popup-heading + p {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+.popup-icon {
+  flex: 0 0 3.5em;
+  width: 3.5em;
+  height: 3.5em;
+  margin-right: 1em;
+}
+.popup-close { /*styling close button*/
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 1em;
+  height: 1em;
+  border: 1px solid var(--white);
+  box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transition: var(--trans) ease;
+}
+.popup-close:hover {
+  cursor: pointer;
+  box-shadow: 0 0 1em rgba(255, 255, 255, 0.5);
+}
+.popup-close::before,
+.popup-close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.75em;
+  height: 1px;
+  background: var(--white);
+  transform: translate(-50%, -50%) rotate(45deg);
+  transition: inherit;
+}
+.popup-close:hover::before, 
+.popup-close:hover::after {
+  box-shadow: 0 0 0.25em rgba(255, 255, 255, 0.8);
+}
+.popup-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/*styling for other elements*/
+/*text links + image links in particular*/
+a.text-link {
+  background-image: linear-gradient(var(--white), var(--white));
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+}
+a.text-link:hover {
+  background-size: 100% 1px;
+}
+a.img-link {
+  opacity: 0.8;
+}
+a.img-link > * {
+  max-width: 100%;
+  max-height: 100%;
+}
+a.img-link:hover {
+  opacity: 1;
+}
+
+/*image wrappers and picture elements*/
+.img-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.img-wrapper > * {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.img-wrapper img {
+  object-fit: cover;
+}
+.img-wrapper.center > * {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+picture > * {
+  width: 100%;
+  height: 100%;
 }

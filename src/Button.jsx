@@ -21,7 +21,7 @@ export default function Button({message, type="", onButtonClick, isAsync=false, 
 
   return (
     <button className = {buttonClass} onClick = {clickFunc}>
-      <span>{message}</span>
+      <span className = "button-message">{message}</span>
       <div className = "button-load">
         <span className = "button-load-symbol"></span>
       </div>
