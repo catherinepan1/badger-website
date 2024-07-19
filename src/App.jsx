@@ -6,13 +6,12 @@ import { addEmail } from './firebase-db.js';
 
 //generic picture element used load a picture only on mobile or only on desktop (loads a transparent image otherwise)
 function ResponsivePicture({src, mobile=true, classes="", alt=""}){
-  const pictureClass = (mobile ? "mobile ":"") + classes;
-  const pictureSrc = "./media/" + src;
+  const pictureClass = (mobile ? "mobile ":"desktop ") + classes;
   const mediaQuery = "(" + (mobile ? "max":"min") + "-width: 40rem)";
   //transparent pixel code taken from https://stackoverflow.com/questions/59089597/how-can-i-prevent-images-that-are-on-my-desktop-site-from-loading-on-mobile
   return (
     <picture className = {pictureClass}>
-      <source media = {mediaQuery} srcSet = {pictureSrc}/>
+      <source media = {mediaQuery} srcSet = {src}/>
       <img src = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'/%3E" alt={alt}/>
     </picture>
   );
@@ -22,7 +21,7 @@ function ResponsivePicture({src, mobile=true, classes="", alt=""}){
 function Header(){
   return (
     <header>
-      <a href = "#" id = "header-logo">
+      <a href = "https://apps.apple.com/us/app/badgrr/id6468092511" id = "header-logo" target="_blank">
         <img src = "./media/logo.png" alt = "Badger Logo"/>
         <span>Badger</span>
       </a>
@@ -38,12 +37,15 @@ function Landing(){
       <div id = "landing-wrapper" className = "content">
         <div id = "landing-text">
           <h1><span>Discover</span><span>Snap</span><span>Collect</span></h1>
-          <a href = "#" className = "styled-button download-button mobile"><span className = "button-message">Download</span></a>
+          <a href = "https://apps.apple.com/us/app/badgrr/id6468092511" className = "styled-button download-button mobile" target = "_blank"><span className = "button-message">Download</span></a>
           <p>Designed with the modern adventurer in mind, Badger bridges the gap between digital socializing and real-world experiences, offering a novel way to document, share, and celebrate the places you've been and the events you've attended</p>
-          <a href = "#" className = "styled-button download-button desktop"><span className = "button-message">Download</span></a>
+          <a href = "https://apps.apple.com/us/app/badgrr/id6468092511" className = "styled-button download-button desktop" target = "_blank"><span className = "button-message">Download</span></a>
         </div>
         <div className = "img-wrapper">
-          <ResponsivePicture src = "landing-graphic.jpg" alt = "Image of someone taking a photo of fireworks" mobile={false}></ResponsivePicture>
+          <img srcSet = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'/%3E 1w, ./media/landing-graphic-400x600.jpg 400w, ./media/landing-graphic-700x1050.jpg 700w, ./media/landing-graphic-1000x1500.jpg 1000w, ./media/landing-graphic.jpg 3648w" 
+          sizes = "(min-width: 93.75rem) 30rem, (min-width: 60rem) 24vw, (min-width: 40rem) 28vw, 1px" 
+          alt = "Image of someone taking a photo of fireworks" 
+          className = "desktop"/>
         </div>
       </div>
     </section>
@@ -68,16 +70,16 @@ function Feature({heading, description, graphicSrc, alt=""}){
 function CTASection(){
   return (
     <section id = "cta">
-      <ResponsivePicture src = "cta-background-large-left.svg" classes = "cta-back-image cta-left" mobile={false}></ResponsivePicture>
-      <ResponsivePicture src = "cta-background-large-right.svg" classes = "cta-back-image cta-right" mobile={false}></ResponsivePicture>
-      <ResponsivePicture src = "small-divider.svg" classes = "divider-img"></ResponsivePicture>
+      <ResponsivePicture src = "./media/cta-background-large-left.svg" classes = "cta-back-image cta-left" mobile={false}></ResponsivePicture>
+      <ResponsivePicture src = "./media/cta-background-large-right.svg" classes = "cta-back-image cta-right" mobile={false}></ResponsivePicture>
+      <ResponsivePicture src = "./media/small-divider.svg" classes = "divider-img"></ResponsivePicture>
       <div className = "content-side">
         <p>Start turning your explorations into stories worth sharing</p>
       </div>
       <div id = "download-area">
-        <ResponsivePicture src = "cta-background-small-left.svg" classes = "cta-back-image cta-left"></ResponsivePicture>
-        <ResponsivePicture src = "cta-background-small-right.svg" classes = "cta-back-image cta-right"></ResponsivePicture>
-        <a href = "#" className = "styled-button download-button"><span className = "button-message">Download</span></a>
+        <ResponsivePicture src = "./media/cta-background-small-left.svg" classes = "cta-back-image cta-left"></ResponsivePicture>
+        <ResponsivePicture src = "./media/cta-background-small-right.svg" classes = "cta-back-image cta-right"></ResponsivePicture>
+        <a href = "https://apps.apple.com/us/app/badgrr/id6468092511" className = "styled-button download-button" target = "_blank"><span className = "button-message">Download</span></a>
       </div>
     </section>
   );
@@ -147,11 +149,11 @@ function Footer({ addPopup }){
         </div>
       </div>
       <div id = "footer-links">
-        <span><a href = "#" className = "text-link">Privacy Policy</a></span>
-        <span><a href = "#" className = "text-link">Terms and Conditions</a></span>
+        <span><a href = "./documents/privacy-policy.pdf" className = "text-link" target = "_blank">Privacy Policy</a></span>
+        <span><a href = "./documents/terms-of-service.pdf" className = "text-link" target = "_blank">Terms and Conditions</a></span>
         <div id = "footer-icon-links">
-          <a href = "#" className = "img-link"><img src = "./media/instagram-icon.png" alt = "Instagram logo"/></a>
-          <a href = "#" className = "img-link"><img src = "./media/linkedin-icon.png" alt = "Linkedin logo"/></a>
+          <a href = "https://www.instagram.com/badger.social/" className = "img-link" target = "_blank"><img src = "./media/instagram-icon.png" alt = "Instagram logo"/></a>
+          <a href = "https://www.linkedin.com/company/badgersocial/" className = "img-link" target = "_blank"><img src = "./media/linkedin-icon.png" alt = "Linkedin logo"/></a>
         </div>
       </div>
     </footer>

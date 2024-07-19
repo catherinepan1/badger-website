@@ -1,6 +1,6 @@
 /*controlling padding on elements + other general styling of sections*/
 .content, footer, header {
-  max-width: 75em;
+  max-width: 75rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -229,6 +229,7 @@ footer .footer-heading + * {
 }
 #footer-icon-links a {
   height: 1.5em;
+  max-height: 32px;
 }
 
 /*side-by-side desktop styling*/
