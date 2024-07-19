@@ -26,7 +26,6 @@ const db = getFirestore(app);
 export async function addEmail(email){
   try {
     await setDoc(doc(db, 'emails', email), {
-      'email': email,
       'active': true
     });
     return Promise.resolve("You've successfully joined our mailing list!");

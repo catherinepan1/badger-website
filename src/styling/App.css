@@ -1,4 +1,9 @@
 /*controlling padding on elements + other general styling of sections*/
+.content, footer, header {
+  max-width: 75em;
+  margin-left: auto;
+  margin-right: auto;
+}
 .content, footer {
   padding: 2em 10%;
 }
@@ -123,8 +128,26 @@ section .desktop {
   }
 }
 
+/*features section styling*/
+#landing-section + .feature {
+  margin-top: 0;
+}
+.feature-heading {
+  font-size: 1.75em;
+  font-weight: bold;
+  color: var(--white);
+  margin: 0.25em 0;
+}
+.feature-img {
+  width: 100%;
+}
+.feature:nth-of-type(2n + 1) .divider-img {
+  transform: scaleX(-100%);
+}
+
 /*cta styling*/
 #cta {
+  margin: 2em 0;
   text-align: center;
 }
 #cta .divider-img {
@@ -242,6 +265,26 @@ footer .footer-heading + * {
   }
   #landing-wrapper h1 span::after {
     content: "";
+  }
+
+  /*side-by-side flex styling for features, as well*/
+  .feature {
+    display: flex;
+    align-items: center;
+  }
+  .feature > * {
+    flex: 1 1 0;
+    width: 0;
+  }
+  .feature > div,
+  .feature:nth-of-type(2n + 1) .feature-img {
+    margin-right: 10%;
+  }
+  .feature:nth-of-type(2n + 1) > div {
+    margin-right: 0;
+  }
+  .feature:nth-of-type(2n + 1) {
+    flex-direction: row-reverse;
   }
 
   /*cta with larger side graphics*/

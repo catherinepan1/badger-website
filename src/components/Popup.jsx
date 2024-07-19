@@ -73,7 +73,7 @@ export default function Popup({ messageHeading, message, isError, onRemove }){
   return (
     <Transition nodeRef = {nodeRef} in = {shown} timeout = {transDuration} appear = {true}
                 onEnter = {setScrollHeight}
-                //onEntered = {startTimer}
+                onEntered = {startTimer}
                 onExited = {close}>
       { (state) => (
         <div ref = {nodeRef} className = "popup-height-cont" style = {{...defaultStyle, ...transitionStyles[state]}}>

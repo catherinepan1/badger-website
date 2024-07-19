@@ -1,17 +1,14 @@
-/*import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'*/
-import './App.css';
+import './styling/App.css';
 import { useState } from 'react';
-import Button from './Button.jsx';
-import Popup from './Popup.jsx';
+import Button from './components/Button.jsx';
+import Popup from './components/Popup.jsx';
 import { addEmail } from './firebase-db.js';
 
-//generic element to load a picture only on mobile or only on desktop
+//generic picture element used load a picture only on mobile or only on desktop (loads a transparent image otherwise)
 function ResponsivePicture({src, mobile=true, classes="", alt=""}){
   const pictureClass = (mobile ? "mobile ":"") + classes;
   const pictureSrc = "./media/" + src;
-  const mediaQuery = "(" + (mobile ? "max":"min") + "-width: 40em)";
+  const mediaQuery = "(" + (mobile ? "max":"min") + "-width: 40rem)";
   //transparent pixel code taken from https://stackoverflow.com/questions/59089597/how-can-i-prevent-images-that-are-on-my-desktop-site-from-loading-on-mobile
   return (
     <picture className = {pictureClass}>
@@ -36,9 +33,9 @@ function Header(){
 //topmost page element
 function Landing(){
   return (
-    <section className = "content" id = "landing-section">
+    <section id = "landing-section">
       <img src = "./media/homepage-side-graphic.svg" alt = "Background graphic" id = "landing-back-img"/>
-      <div id = "landing-wrapper">
+      <div id = "landing-wrapper" className = "content">
         <div id = "landing-text">
           <h1><span>Discover</span><span>Snap</span><span>Collect</span></h1>
           <a href = "#" className = "styled-button download-button mobile"><span className = "button-message">Download</span></a>
@@ -49,6 +46,20 @@ function Landing(){
           <ResponsivePicture src = "landing-graphic.jpg" alt = "Image of someone taking a photo of fireworks" mobile={false}></ResponsivePicture>
         </div>
       </div>
+    </section>
+  );
+}
+
+//features section
+function Feature({heading, description, graphicSrc, alt=""}){
+  return (
+    <section className = "content feature">
+      <div className = "feature-text">
+        <img src = "./media/small-divider.svg" alt = "Divider"/>
+        <p className = "feature-heading">{heading}</p>
+        <p>{description}</p>
+      </div>
+      <img className = "feature-img" src = { "./media/" + graphicSrc } alt = {alt}/>
     </section>
   );
 }
@@ -150,7 +161,7 @@ function Footer({ addPopup }){
 //full app
 function App() {
   //code dealing with adding and removing popups
-  const [popups, setPopups] = useState([{ id: "xxxx", heading: "testHeading", message: "Hi there! Successfully subscribed!", isError: false }]);
+  const [popups, setPopups] = useState([]);
   const popupList = popups.map((popup) => {
     return (
       <Popup  key={popup.id}
@@ -172,44 +183,27 @@ function App() {
   function removePopup(id){
     setPopups(popups.filter((popup) => popup.id !== id ));
   }
-
-  function testButtonClick(){
-    addPopup("testPopup", "test message");
-  }
-  async function testEmail(){
-    return addEmail("example@example.com");
-  }
-
-  /*
-  const [count, setCount] = useState(0);
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )*/
+  
  return (
   <>
     <Header></Header>
     <Landing></Landing>
+    <Feature heading = "Discover Your Next Adventure"
+             description = "Badger presents a curated showcase of events and destinations ranging from vibrant local festivals to internationally renowned landmarks, all prioritized by your location."
+             graphicSrc = "discover-graphic.svg"
+             alt = "Graphic of a map with several pins and places labeled"></Feature>
+    <Feature heading = "Snap Photos and Make Memories"
+             description = "Every check-in builds up a personalized profile of your adventures you can choose to share with friends, creating both connection and community."
+             graphicSrc = "snap-graphic.svg"
+             alt = "Graphic of a camera with photos of scenery on top"></Feature>
+    <Feature heading = "Collect Badges and Complete Challenges"
+             description = "With Badgepoints and fun challenges, Badger fosters a friendly and competitive environment that propels you to your next unforgettable experience."
+             graphicSrc = "badges-graphic.svg"
+             alt = "Graphic of a mountain and a flag on top surrounded by three badges"></Feature>
+    <Feature heading = "Redeem Rewards"
+             description = "Our reward system allows for easy redemption of offers and discounts, making every exploration not just memorable but also rewarding."
+             graphicSrc = "rewards-graphic.svg"
+             alt = "Graphic of a hand holding an open present box"></Feature>
     <CTASection></CTASection>
     <Footer addPopup = {addPopup}></Footer>
     <div id = "popup-cont">

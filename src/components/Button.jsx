@@ -9,7 +9,6 @@ export default function Button({message, type="", onButtonClick, isAsync=false, 
   function handleClick(e){
     e.preventDefault();
     setStatus("active");
-    //set up promise?
     onButtonClick().then((resolved) => {
       onSuccess(resolved);
       setStatus("default");
