@@ -2,6 +2,7 @@ import './styling/App.css';
 import { useState } from 'react';
 import Button from './components/Button.jsx';
 import Popup from './components/Popup.jsx';
+import ScrollElement from "./components/ScrollElement.jsx";
 import { addEmail } from './firebase-db.js';
 
 //generic picture element used load a picture only on mobile or only on desktop (loads a transparent image otherwise)
@@ -56,12 +57,16 @@ function Landing(){
 function Feature({heading, description, graphicSrc, alt=""}){
   return (
     <section className = "content feature">
-      <div className = "feature-text">
-        <img src = "./media/small-divider.svg" alt = "Divider"/>
-        <p className = "feature-heading">{heading}</p>
-        <p>{description}</p>
-      </div>
-      <img className = "feature-img" src = { "./media/" + graphicSrc } alt = {alt}/>
+      <ScrollElement type = "fade slide-right" transitionDuration={750}>
+        <div className = "feature-text">
+          <img src = "./media/small-divider.svg" alt = "Divider"/>
+          <p className = "feature-heading">{heading}</p>
+          <p>{description}</p>
+        </div>
+      </ScrollElement>
+      <ScrollElement type = "fade slide-left" transitionDuration={750}>
+        <img className = "feature-img" src = { "./media/" + graphicSrc } alt = {alt}/>
+      </ScrollElement>
     </section>
   );
 }
@@ -74,12 +79,16 @@ function CTASection(){
       <ResponsivePicture src = "./media/cta-background-large-right.svg" classes = "cta-back-image cta-right" mobile={false}></ResponsivePicture>
       <ResponsivePicture src = "./media/small-divider.svg" classes = "divider-img"></ResponsivePicture>
       <div className = "content-side">
-        <p>Start turning your explorations into stories worth sharing</p>
+        <ScrollElement type = "fade slide-up" transitionDuration = {500}>
+          <p>Start turning your explorations into stories worth sharing</p>
+        </ScrollElement>
       </div>
       <div id = "download-area">
         <ResponsivePicture src = "./media/cta-background-small-left.svg" classes = "cta-back-image cta-left"></ResponsivePicture>
         <ResponsivePicture src = "./media/cta-background-small-right.svg" classes = "cta-back-image cta-right"></ResponsivePicture>
-        <a href = "https://apps.apple.com/us/app/badgrr/id6468092511" className = "styled-button download-button" target = "_blank"><span className = "button-message">Download</span></a>
+        <ScrollElement type = "fade slide-up" transitionDelay = {100} transitionDuration = {500}>
+          <a href = "https://apps.apple.com/us/app/badgrr/id6468092511" className = "styled-button download-button" target = "_blank"><span className = "button-message">Download</span></a>
+        </ScrollElement>
       </div>
     </section>
   );
