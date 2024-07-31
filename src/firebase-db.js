@@ -22,11 +22,24 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
+//helper function to format date in in YYYY-MM-DD hh:mm:ss format, in UTC
+function formatDate(date){
+  const month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
+  const day = date.getUTCDate().toString().padStart(2, '0');
+  const hours = date.getUTCHours().toString().padStart(2, '0');
+  const minutes = date.getUTCMinutes().toString().padStart(2, '0');
+  const seconds = date.getUTCSeconds().toString().padStart(2, '0');
+  return (
+    date.getUTCFullYear() + "-" + month + "-" + day + " " + 
+    hours + ":" + minutes + ":" + seconds
+  );
+}
+
 //function to add email to mailing list
 export async function addEmail(email){
   try {
     await setDoc(doc(db, 'emails', email), {
-      'active': true
+      'timestamp': formatDate(new Date(Date.now()))
     });
     return Promise.resolve("You've successfully joined our mailing list!");
   }
